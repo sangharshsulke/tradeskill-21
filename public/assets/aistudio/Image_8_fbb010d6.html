@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#2a1700", "on-primary-fixed": "#160066", "outline-variant": "#c8c4d8", "tertiary-fixed": "#ffddb8", "error-container": "#ffdad6", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#653e00", "error": "#ba1a1a", "surface-variant": "#d3e4fe", "on-surface-variant": "#474556", "primary-fixed-dim": "#c6bfff", "background": "#f8f9ff", "surface-container-high": "#dce9ff", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "tertiary": "#613c00", "on-secondary-fixed": "#002114", "inverse-primary": "#c6bfff", "surface-container-highest": "#d3e4fe", "on-secondary": "#ffffff", "on-secondary-container": "#00714e", "secondary-container": "#82f5c1", "primary-fixed": "#e4dfff", "on-tertiary-container": "#ffcb8d", "primary-container": "#5338e8", "on-secondary-fixed-variant": "#005137", "surface-tint": "#563ceb", "outline": "#787587", "on-primary-container": "#d4ceff", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#3d13d4", "inverse-on-surface": "#eaf1ff", "on-surface": "#0b1c30", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "secondary-fixed": "#85f8c4", "primary": "#3a09d2", "surface": "#f8f9ff", "surface-container-low": "#eff4ff", "tertiary-fixed-dim": "#ffb95f", "secondary-fixed-dim": "#68dba9", "surface-container": "#e5eeff", "on-error-container": "#93000a", "on-background": "#0b1c30", "on-error": "#ffffff", "tertiary-container": "#815100", "secondary": "#006c4a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "2rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "space-md": "1rem" }, fontFamily: { "display-hero": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "title-md": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Inter"] }, fontSize: { "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="TradeSkill Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeyQ1tGsSYAkUZgMALz4BWbFlEW_Efo1FrvNPH6WV-haKFO7XfDBzV7YyBs5ZQZPnRQHL4UvtouDTmEiy6Xc7Q5lvAtqVY7diyhYDXz8mDI8RrZOl3hjtrHcL965ZptKoPfDYxkB2GsVO2pR04AWwJrdu2VvqHF2qaBDUcnSvUdGq2YhJJejXJk3fNuE9SxaVHu5F2CnH6LoQmDHC__gvLueEqYME7oTNiVnTEySXmSaiWAarq_hM"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight font-bold tracking-tight">TradeSkill</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Dashboard</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Search skills" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><a aria-label="Open User Profile" class="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-95 ml-space-xs" data-path="dashboard" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqYkvUVDx90OoMqyUCT73GI1Co1tq7PlgE8pCbafW-s5bhJ7c_l2JIs92y7OpPo1VYBymEAJWQa9P2De8Q_0VeLughqetvKz0BkfXlQfsuI1vHcEO2xvqTBxAu87yMK_ss4Xteq1Js6WYUgBfPqCK2oo-xqYSwdy9QU0kJiLmqrQcvpYwOZFlGscV8UXFDIXd20j9E-ODfY45xbgYfh7QGd4fE22ZaAgDuzMFFdXbQnnmd3jDukoA"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full px-margin-mobile pb-space-xl space-y-space-lg">
+<!-- Micro Delight Toast Container -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform -translate-y-2 max-w-[90%] w-auto" id="toastNotification">
+<div class="bg-inverse-surface text-inverse-on-surface px-space-md py-space-sm rounded-xl shadow-xl flex items-center gap-space-xs font-label-md text-label-md">
+<span class="material-symbols-outlined text-[18px] text-secondary-fixed">check_circle</span>
+<span id="toastMessage">Trade terms updated!</span>
+</div>
+</div>
+<!-- 1. Quick Overview Header -->
+<section class="flex flex-col gap-space-md pt-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<img class="w-13 h-13 rounded-full object-cover shadow-sm bg-surface-container" data-alt="Warm and welcoming portrait of a friendly creative technologist smiling outdoors in soft natural morning golden light, wearing minimal casual attire, studio-grade soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOOe56wIo3hc66N0LEzEJPSQum4loJtLMMSXi97ETp8zGtnVRJen1Rc0_D7locpOzDQx2xEW7HPL3Ow0uN-ZfuNv3FRNf_SkoSPTasaptobleIhVbHBxh7r50eyMUfrjcnAG6cAHD3Vsm6rU7Pg81TQM0JqaFhFlT5cUsgKpL4BPCVHvl1NDoVidFX7NbAnTC7ALIuPYyTR2RP94lcW3oPed3bM-R-0-MdSX3ZdPF8ZAngRjfQDmk"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-secondary ring-2 ring-surface"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-space-xs">
+<h1 class="font-headline-sm text-headline-sm text-on-surface font-bold truncate">Elena Rostova</h1>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;" title="Verified Reciprocal Member">verified</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span>Exchange Pioneer</span>
+<span class="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
+<span class="text-secondary font-medium">Available this week</span>
+</p>
+</div>
+</div>
+<button aria-label="Dashboard Settings" class="w-10 h-10 rounded-full bg-surface-container hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Trust & Reciprocity Hero Banner -->
+<div class="bg-primary-container text-on-primary-container rounded-2xl p-space-md shadow-md relative overflow-hidden">
+<!-- Decorative background glow element -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-surface-tint opacity-30 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm relative z-10">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary-container text-[20px]">shield_with_heart</span>
+<span class="font-label-md text-label-md uppercase tracking-wider text-primary-fixed">Reciprocal Trust</span>
+</div>
+<span class="bg-surface-container-lowest/20 backdrop-blur-md px-2.5 py-0.5 rounded-full font-label-sm text-label-sm text-on-primary font-bold">Top 2%</span>
+</div>
+<div class="grid grid-cols-3 gap-space-xs text-center relative z-10">
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
+<div class="flex items-baseline gap-0.5">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">98</span>
+<span class="font-label-sm text-label-sm text-secondary-container font-semibold">%</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed opacity-90 mt-0.5">Trust Score</span>
+</div>
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
+<div class="flex items-baseline gap-0.5">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">38</span>
+<span class="font-label-sm text-label-sm text-primary-fixed">h</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed opacity-90 mt-0.5">Time Swapped</span>
+</div>
+<div class="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
+<div class="flex items-baseline gap-0.5">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">5</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary-fixed opacity-90 mt-0.5">Active Peers</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Exchange Statistics Bento Grid -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Exchange Vitality</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary inline-block"></span> 1:1 Parity balanced
+      </span>
+</div>
+<div class="grid grid-cols-2 gap-space-xs">
+<!-- Skills Offered -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">school</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-secondary">arrow_outward</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface font-bold block leading-none">3</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 block">Skills Offered</span>
+</div>
+</div>
+<!-- Skills Learning -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-lg bg-secondary-container/30 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">psychology</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-secondary">south_west</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface font-bold block leading-none">2</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 block">Skills Learning</span>
+</div>
+</div>
+<!-- Sessions Completed -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">+4 this mo</span>
+</div>
+<div class="mt-space-sm">
+<span class="font-headline-md text-headline-md text-on-surface font-bold block leading-none">19</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 block">Sessions Done</span>
+</div>
+</div>
+<!-- Community Rating -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-tertiary-fixed-variant font-semibold">100% Pos</span>
+</div>
+<div class="mt-space-sm">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-md text-headline-md text-on-surface font-bold block leading-none">4.95</span>
+<span class="font-label-sm text-label-sm text-tertiary">★</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-1 block">Peer Rating</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Incoming Exchange Requests -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Exchange Inquiries</h2>
+<span class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center justify-center font-bold">2</span>
+</div>
+<span class="font-label-sm text-label-sm text-primary font-semibold">Review Terms</span>
+</div>
+<!-- Request Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-300" id="requestCard1">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="Close-up creative portrait of a male product designer with modern eyewear, warm cinematic natural ambient lighting in a minimalist wood design studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2iQcjddADLrTAqm3fEKpiZQ_hEWnyaP8laiBu4BtZsB9ykSAEIrjHL0s1wJeA9-QMLYEglCvcWrkL2r4aKZeISfE3wqAas5FhmiOWVfkdd13nSY_LBX1ZHirgJu8D-L2sciB_JpMaWBrIDRtpnFhnxHpAi4292TucFty6qGCBOVujvV_p_iXcKVMCyNUDJS8pThMm36uLeiohlvV-JlMRnp8VGmMzbimWz2ldUF2_ZJY5i5XRYn8"/>
+<div class="min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold truncate">Marcus Vance</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Design Lead • 99% Karma</p>
+</div>
+</div>
+<span class="bg-secondary-container/40 text-on-secondary-container px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold whitespace-nowrap">1:1 Direct</span>
+</div>
+<!-- Trade Equation Barter Matrix -->
+<div class="bg-surface-container-low rounded-xl p-space-sm my-space-sm flex items-center justify-between text-center gap-space-xs">
+<div class="flex-1 flex flex-col items-center min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">He Offers</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate w-full mt-0.5">Design Systems</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-sm" title="Direct Fair Trade Parity">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+</div>
+<div class="flex-1 flex flex-col items-center min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">He Wants</span>
+<span class="font-label-md text-label-md text-primary font-semibold truncate w-full mt-0.5">Senior React Mentoring</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic mb-space-sm">
+        "Hey Elena! Love your component architecture articles. Looking to swap 2 hours of Design Tokens for React 19 concurrent patterns."
+      </p>
+<div class="flex items-center gap-space-xs">
+<button class="flex-1 h-11 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform shadow-sm" onclick="handleRequest('requestCard1', 'accepted', 'Marcus Vance')">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+          Accept Exchange
+        </button>
+<button class="h-11 px-space-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant rounded-xl font-label-md text-label-md font-medium flex items-center justify-center active:scale-95 transition-colors" onclick="handleRequest('requestCard1', 'declined', 'Marcus Vance')">
+          Decline
+        </button>
+</div>
+</div>
+<!-- Request Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-300" id="requestCard2">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm min-w-0">
+<img class="w-10 h-10 rounded-full object-cover bg-surface-container" data-alt="Portrait of an energetic female sound engineer and Japanese linguist with headphones draped on her neck, bright cheerful coffeehouse setting with artistic warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9k2ZexjOEDuXsjJICyqEz5SOu_DPkGROjXqDNcr1aFd9PFRQ8tVB80SJpVbzMNmMM_ruFAdKUx5o6rqT8MJqAdfm5M9pZLy3_8I4ivty2n5f_HD8JdcCdlV8J47DqJIh1lL9vpxDqMjfueqYxZRXXNh-Sqt16zxbJbUI_2zVmV4ErEDJjTRrEka5A_bnlVHWFcKt1mgKUrMirylUGOPp3mKShyMZevN7j0SPOR6nNBCkVnZhTeO4"/>
+<div class="min-w-0">
+<h3 class="font-title-md text-title-md text-on-surface font-semibold truncate">Kenji Takahashi</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Tokyo Native • 95% Karma</p>
+</div>
+</div>
+<span class="bg-surface-container text-on-surface-variant px-2 py-0.5 rounded-full font-label-sm text-label-sm font-semibold whitespace-nowrap">Flexible</span>
+</div>
+<!-- Trade Equation Barter Matrix -->
+<div class="bg-surface-container-low rounded-xl p-space-sm my-space-sm flex items-center justify-between text-center gap-space-xs">
+<div class="flex-1 flex flex-col items-center min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">He Offers</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold truncate w-full mt-0.5">Japanese N5 Drill</span>
+</div>
+<div class="w-7 h-7 rounded-full bg-secondary text-on-secondary flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+</div>
+<div class="flex-1 flex flex-col items-center min-w-0">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">He Wants</span>
+<span class="font-label-md text-label-md text-primary font-semibold truncate w-full mt-0.5">UI Prototyping</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant italic mb-space-sm">
+        "Konichiwa! Ready to run weekly conversational drills in exchange for polishing my indie app's Figma prototypes!"
+      </p>
+<div class="flex items-center gap-space-xs">
+<button class="flex-1 h-11 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-semibold flex items-center justify-center gap-1 active:scale-95 transition-transform shadow-sm" onclick="handleRequest('requestCard2', 'accepted', 'Kenji Takahashi')">
+<span class="material-symbols-outlined text-[18px]">handshake</span>
+          Accept Exchange
+        </button>
+<button class="h-11 px-space-md bg-surface-container hover:bg-surface-container-high text-on-surface-variant rounded-xl font-label-md text-label-md font-medium flex items-center justify-center active:scale-95 transition-colors" onclick="handleRequest('requestCard2', 'declined', 'Kenji Takahashi')">
+          Decline
+        </button>
+</div>
+</div>
+</section>
+<!-- 4. My Listed Skills (CRUD Hub) -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">My Skill Portfolio</h2>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Active teaching &amp; learning units</span>
+</div>
+<button class="h-9 px-space-sm bg-primary text-on-primary rounded-xl font-label-sm text-label-sm font-semibold flex items-center gap-1 shadow-sm active:scale-95 transition-transform" onclick="openAddSkillModal()">
+<span class="material-symbols-outlined text-[16px]">add</span>
+        Add Skill
+      </button>
+</div>
+<!-- Skill 1: Teach -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-300" id="skillCard1">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full font-label-sm text-label-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Teaching
+          </span>
+<span class="bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full font-medium" id="skillStatus1">Active</span>
+</div>
+<!-- CRUD Action Menu -->
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button aria-label="Edit Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="editSkill('Senior React Mentoring')">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Pause Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="togglePauseSkill('skillStatus1', 'skillCard1')">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+</button>
+<button aria-label="Delete Skill" class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-error flex items-center justify-center transition-colors active:scale-90" onclick="deleteSkill('skillCard1', 'Senior React Mentoring')">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Senior React Mentoring</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Deep-dive architecture, custom hooks, SSR debugging, and state machines with real-world codebase walk-throughs.
+        </p>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t-0 bg-surface-container-low px-space-sm py-1.5 rounded-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant">14 hours taught</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">1:1 Hour Credit Equivalence</span>
+</div>
+</div>
+<!-- Skill 2: Teach -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-300" id="skillCard2">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 bg-surface-container px-2 py-0.5 rounded-full font-label-sm text-label-sm text-on-surface">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+            Teaching
+          </span>
+<span class="bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full font-medium" id="skillStatus2">Active</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button aria-label="Edit Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="editSkill('UI Prototyping &amp; Micro-interactions')">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Pause Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="togglePauseSkill('skillStatus2', 'skillCard2')">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+</button>
+<button aria-label="Delete Skill" class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-error flex items-center justify-center transition-colors active:scale-90" onclick="deleteSkill('skillCard2', 'UI Prototyping &amp; Micro-interactions')">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">UI Prototyping</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Figma component variants, advanced physics curves, realistic handoff specs, and delightful micro-interactions.
+        </p>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t-0 bg-surface-container-low px-space-sm py-1.5 rounded-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant">8 hours taught</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Instant Swap Ready</span>
+</div>
+</div>
+<!-- Skill 3: Learn -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm transition-all duration-300" id="skillCard3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 bg-secondary-container/30 px-2 py-0.5 rounded-full font-label-sm text-label-sm text-secondary font-semibold">
+<span class="material-symbols-outlined text-[14px]">psychology</span>
+            Seeking to Learn
+          </span>
+<span class="bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full font-medium" id="skillStatus3">Looking</span>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<button aria-label="Edit Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="editSkill('Japanese N5 Conversational')">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button aria-label="Pause Skill" class="w-8 h-8 rounded-lg hover:bg-surface-container flex items-center justify-center transition-colors active:scale-90" onclick="togglePauseSkill('skillStatus3', 'skillCard3')">
+<span class="material-symbols-outlined text-[18px]">pause_circle</span>
+</button>
+<button aria-label="Delete Skill" class="w-8 h-8 rounded-lg hover:bg-error-container hover:text-error flex items-center justify-center transition-colors active:scale-90" onclick="deleteSkill('skillCard3', 'Japanese N5 Conversational')">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<div class="mt-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Japanese N5 Conversational</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+          Pronunciation nuances, practical restaurant and transit dialogues, and Hiragana/Katakana daily drills.
+        </p>
+</div>
+<div class="flex items-center justify-between mt-space-sm pt-space-xs border-t-0 bg-surface-container-low px-space-sm py-1.5 rounded-xl">
+<span class="font-label-sm text-label-sm text-on-surface-variant">16 hours completed</span>
+<span class="font-label-sm text-label-sm text-primary font-semibold">2 Active Mentors</span>
+</div>
+</div>
+</section>
+<!-- 5. Recent Partner Reviews & Testimonials -->
+<section class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<h2 class="font-title-md text-title-md text-on-surface font-bold">Partner Testimonials</h2>
+<span class="material-symbols-outlined text-secondary text-[18px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">42 Verified Reviews</span>
+</div>
+<!-- Review Card 1 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover bg-surface-container" data-alt="Portrait of an approachable software engineer in a vibrant studio setting with subtle warm purple ambient illumination, candid expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3YNqvuWa24KUxsrByQg7UoNY8X4OszOHhloJTQCtxtqWfe8tO-7rZ9rhKuQZGtBPWVXu-bfjL93b3Lu13r0aEvfEYHj1ot80fh54Rf63G9qs7-9RcbRlVIdJ3G60jZkOr3K0CrM_CLCnw4NyxwrQ4HD4KMM3cb7oEOkeNOLd2DJd-QAW1AW99s8TIB4TybG11AGCeroAer7bjuoin_ESp_KdD4QJO6H24I1ZY3mq3j6nWgm7IG64"/>
+<div class="min-w-0">
+<h4 class="font-label-md text-label-md text-on-surface font-bold truncate">Soraya Chen</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Swapped for: TypeScript AST Parsing</span>
+</div>
+</div>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+        "Elena unlocked React server components for me in 90 minutes faster than weeks of tutorials. Honest, patient, and deeply thoughtful with code critiques. A quintessential TradeSkill barter partner!"
+      </p>
+<div class="flex items-center justify-between pt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Verified 2h Session
+        </span>
+<span>2 days ago</span>
+</div>
+</div>
+<!-- Review Card 2 -->
+<div class="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<img class="w-9 h-9 rounded-full object-cover bg-surface-container" data-alt="Portrait of a young creative professional with friendly expression against an urban daylight balcony backdrop with soft architectural lines" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrXQQk7PJHuWxAOdrKBIwxU_VdaIoYXVp1eXiCJB9spHn0vvkJBqkYlaBbCrymJz0NhDIysCqzBd4tNwlz-wOaBkxKN9iA7UTlc9ZsAMO7Nynf-_FefYc8rioxWG5XQEVrz99w9cVUN8BHqlaODdPBTHMSsot3M7PeT6rSa9xO6dBCZiTvqI8iBAj2JgV34ROmBayCX8Y0qhKrklvQ3Tk9vpsHwuFMJSH9c5QRc-2mn5U6OIT-pOs"/>
+<div class="min-w-0">
+<h4 class="font-label-md text-label-md text-on-surface font-bold truncate">David O'Reilly</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant block">Swapped for: Product Narrative Pitching</span>
+</div>
+</div>
+<div class="flex items-center text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface leading-relaxed">
+        "Her Figma prototyping breakdown helped me secure our team’s quarterly buy-in. Super generous with time and shared her personal component kits. Can't wait for our next trade session."
+      </p>
+<div class="flex items-center justify-between pt-1 font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1 text-secondary">
+<span class="material-symbols-outlined text-[14px]">verified_user</span> Verified 1h Session
+        </span>
+<span>Last week</span>
+</div>
+</div>
+</section>
+<!-- Interactive Modal for Adding a New Skill (Hidden by default) -->
+<div class="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-end justify-center hidden opacity-0 transition-opacity duration-300" id="addSkillModal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-t-3xl p-space-lg shadow-xl transform translate-y-full transition-transform duration-300 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">add_task</span>
+</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">List a New Skill</h3>
+</div>
+<button aria-label="Close modal" class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant active:scale-90" onclick="closeAddSkillModal()">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-space-sm">
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-1">Exchange Intent</label>
+<div class="grid grid-cols-2 gap-space-xs">
+<button class="py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-primary text-on-primary flex items-center justify-center gap-1 transition-all" id="typeTeachBtn" onclick="selectSkillType('teach')" type="button">
+<span class="material-symbols-outlined text-[16px]">school</span> Teach Skill
+            </button>
+<button class="py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-surface-container text-on-surface-variant flex items-center justify-center gap-1 transition-all" id="typeLearnBtn" onclick="selectSkillType('learn')" type="button">
+<span class="material-symbols-outlined text-[16px]">psychology</span> Learn Skill
+            </button>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-1">Skill Title</label>
+<input class="w-full bg-surface-container-lowest text-on-surface rounded-xl p-space-sm font-body-md text-body-md shadow-sm outline-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline" id="newSkillTitle" placeholder="e.g. Next.js 15 App Router Architecture" type="text"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface font-semibold mb-1">Exchange Offering Description</label>
+<textarea class="w-full bg-surface-container-lowest text-on-surface rounded-xl p-space-sm font-body-md text-body-md shadow-sm outline-none focus:ring-2 focus:ring-primary/40 transition-all placeholder:text-outline resize-none" id="newSkillDesc" placeholder="What specific knowledge, exercises, or deliverables will you exchange?" rows="2"></textarea>
+</div>
+</div>
+<div class="flex items-center gap-space-xs pt-space-xs">
+<button class="flex-1 h-12 bg-primary text-on-primary rounded-xl font-label-md text-label-md font-semibold shadow-md active:scale-95 transition-transform flex items-center justify-center gap-1" onclick="saveNewSkill()">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+          Publish to Community
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Toast notifications for user interactions
+  function showToast(message) {
+    const toast = document.getElementById('toastNotification');
+    const toastMsg = document.getElementById('toastMessage');
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = message;
+    toast.classList.remove('opacity-0', '-translate-y-2');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.add('opacity-0', '-translate-y-2');
+      toast.classList.remove('opacity-100', 'translate-y-0');
+    }, 2400);
+  }
+
+  // Triage incoming swap inquiries
+  function handleRequest(cardId, action, userName) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    card.style.transform = 'scale(0.96)';
+    card.style.opacity = '0';
+    setTimeout(() => {
+      card.remove();
+      if (action === 'accepted') {
+        showToast('Exchange agreed with ' + userName + '! Direct chat opened.');
+      } else {
+        showToast('Politely declined exchange from ' + userName + '.');
+      }
+    }, 300);
+  }
+
+  // Toggle pause/active status on a skill
+  function togglePauseSkill(statusId, cardId) {
+    const badge = document.getElementById(statusId);
+    if (!badge) return;
+    if (badge.textContent.trim() === 'Active') {
+      badge.textContent = 'Paused';
+      badge.className = 'bg-surface-container text-on-surface-variant font-label-sm text-label-sm px-2 py-0.5 rounded-full font-medium';
+      showToast('Skill paused. Hidden from marketplace search.');
+    } else {
+      badge.textContent = 'Active';
+      badge.className = 'bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm px-2 py-0.5 rounded-full font-medium';
+      showToast('Skill activated! Ready for peer trades.');
+    }
+  }
+
+  // Delete skill confirmation with smooth collapse
+  function deleteSkill(cardId, title) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(12px)';
+    setTimeout(() => {
+      card.remove();
+      showToast('Removed "' + title + '" from your portfolio.');
+    }, 280);
+  }
+
+  // Edit skill trigger
+  function editSkill(title) {
+    showToast('Editing terms for ' + title);
+  }
+
+  // Add skill modal interactions
+  let selectedType = 'teach';
+  function openAddSkillModal() {
+    const modal = document.getElementById('addSkillModal');
+    if (!modal) return;
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+      modal.classList.remove('opacity-0');
+      modal.children[0].classList.remove('translate-y-full');
+    }, 10);
+  }
+
+  function closeAddSkillModal() {
+    const modal = document.getElementById('addSkillModal');
+    if (!modal) return;
+    modal.classList.add('opacity-0');
+    modal.children[0].classList.add('translate-y-full');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+    }, 300);
+  }
+
+  function selectSkillType(type) {
+    selectedType = type;
+    const teachBtn = document.getElementById('typeTeachBtn');
+    const learnBtn = document.getElementById('typeLearnBtn');
+    if (type === 'teach') {
+      teachBtn.className = 'py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-primary text-on-primary flex items-center justify-center gap-1 transition-all';
+      learnBtn.className = 'py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-surface-container text-on-surface-variant flex items-center justify-center gap-1 transition-all';
+    } else {
+      learnBtn.className = 'py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-secondary text-on-secondary flex items-center justify-center gap-1 transition-all';
+      teachBtn.className = 'py-2.5 px-space-sm rounded-xl font-label-md text-label-md font-semibold bg-surface-container text-on-surface-variant flex items-center justify-center gap-1 transition-all';
+    }
+  }
+
+  function saveNewSkill() {
+    const titleInput = document.getElementById('newSkillTitle');
+    const title = titleInput ? titleInput.value.trim() : '';
+    if (!title) {
+      showToast('Please specify a skill title first!');
+      return;
+    }
+    closeAddSkillModal();
+    showToast('Successfully published: ' + title);
+    if (titleInput) titleInput.value = '';
+    const descInput = document.getElementById('newSkillDesc');
+    if (descInput) descInput.value = '';
+  }
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,28,48,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">swap_horiz</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="skills" href="#"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Skills</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="people" href="#"><span class="material-symbols-outlined text-[24px]">group</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">People</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="sessions" href="#"><span class="material-symbols-outlined text-[24px]">event_available</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Sessions</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-14 h-14 transition-all active:scale-95 text-primary font-semibold" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">equalizer</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Dashboard</span></a></div></nav></body></html>

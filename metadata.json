@@ -1,0 +1,6 @@
+{
+  "name": "TradeSkill - Peer-to-Peer Reciprocal Knowledge Exchange",
+  "description": "Zero-currency reciprocal skill trading platform. Trade your domain expertise for real-time 1-on-1 coaching without spending a cent.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

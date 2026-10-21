@@ -1,0 +1,217 @@
+---
+name: Direct Exchange
+colors:
+  surface: '#f8f9ff'
+  surface-dim: '#cbdbf5'
+  surface-bright: '#f8f9ff'
+  surface-container-lowest: '#ffffff'
+  surface-container-low: '#eff4ff'
+  surface-container: '#e5eeff'
+  surface-container-high: '#dce9ff'
+  surface-container-highest: '#d3e4fe'
+  on-surface: '#0b1c30'
+  on-surface-variant: '#474556'
+  inverse-surface: '#213145'
+  inverse-on-surface: '#eaf1ff'
+  outline: '#787587'
+  outline-variant: '#c8c4d8'
+  surface-tint: '#563ceb'
+  primary: '#3a09d2'
+  on-primary: '#ffffff'
+  primary-container: '#5338e8'
+  on-primary-container: '#d4ceff'
+  inverse-primary: '#c6bfff'
+  secondary: '#006c4a'
+  on-secondary: '#ffffff'
+  secondary-container: '#82f5c1'
+  on-secondary-container: '#00714e'
+  tertiary: '#613c00'
+  on-tertiary: '#ffffff'
+  tertiary-container: '#815100'
+  on-tertiary-container: '#ffcb8d'
+  error: '#ba1a1a'
+  on-error: '#ffffff'
+  error-container: '#ffdad6'
+  on-error-container: '#93000a'
+  primary-fixed: '#e4dfff'
+  primary-fixed-dim: '#c6bfff'
+  on-primary-fixed: '#160066'
+  on-primary-fixed-variant: '#3d13d4'
+  secondary-fixed: '#85f8c4'
+  secondary-fixed-dim: '#68dba9'
+  on-secondary-fixed: '#002114'
+  on-secondary-fixed-variant: '#005137'
+  tertiary-fixed: '#ffddb8'
+  tertiary-fixed-dim: '#ffb95f'
+  on-tertiary-fixed: '#2a1700'
+  on-tertiary-fixed-variant: '#653e00'
+  background: '#f8f9ff'
+  on-background: '#0b1c30'
+  surface-variant: '#d3e4fe'
+typography:
+  display-hero:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 48px
+    fontWeight: '700'
+    lineHeight: 56px
+    letterSpacing: -0.03em
+  display-hero-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 34px
+    fontWeight: '700'
+    lineHeight: 40px
+    letterSpacing: -0.025em
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: '700'
+    lineHeight: 38px
+    letterSpacing: -0.02em
+  headline-lg-mobile:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 26px
+    fontWeight: '700'
+    lineHeight: 32px
+    letterSpacing: -0.015em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 22px
+    fontWeight: '600'
+    lineHeight: 28px
+    letterSpacing: -0.015em
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 24px
+    letterSpacing: -0.01em
+  title-md:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '600'
+    lineHeight: 22px
+    letterSpacing: -0.005em
+  body-lg:
+    fontFamily: Inter
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-md:
+    fontFamily: Inter
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 20px
+  body-sm:
+    fontFamily: Inter
+    fontSize: 13px
+    fontWeight: '400'
+    lineHeight: 18px
+  label-md:
+    fontFamily: Inter
+    fontSize: 13px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.01em
+  label-sm:
+    fontFamily: Inter
+    fontSize: 11px
+    fontWeight: '600'
+    lineHeight: 14px
+    letterSpacing: 0.03em
+rounded:
+  sm: 0.25rem
+  DEFAULT: 0.5rem
+  md: 0.75rem
+  lg: 1rem
+  xl: 1.5rem
+  full: 9999px
+spacing:
+  gutter: 1.5rem
+  gutter-mobile: 1rem
+  margin: 2rem
+  margin-mobile: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 1rem
+  space-lg: 1.5rem
+  space-xl: 2.5rem
+---
+
+## Brand & Style
+
+This design system powers a peer-to-peer reciprocal knowledge marketplace where competence replaces currency. The interface merges the structural discipline of modern product design with the kinetic, generous energy of collaborative growth. It communicates trust, immediate utility, and intellectual reciprocity.
+
+The aesthetic pairs crisp, airy surfaces with vibrant focal anchors. Soft neutral perimeters isolate dense information units, while luminous electric indigo and balanced mint accents clarify mutual commitments. Interaction patterns emphasize agency, verifiable trust, and tangible parity in every exchange.
+
+## Colors
+
+The palette is tuned for high functional clarity against a luminous, neutral canvas:
+
+- **Primary (`#5338E8` - Electric Indigo):** Reserved for primary conversion vectors, key interface controls, active navigational states, and bidirectional skill connections.
+- **Secondary (`#059669` - Emerald Mint):** Represents equilibrium, positive balance credits, completed milestones, verified skills, and proportional exchange parity.
+- **Tertiary (`#F59E0B` - Amber Warmth):** Denotes in-progress sessions, pending counterpart approvals, and time-sensitive proposals.
+- **Neutral (`#64748B` - Slate Core):** Anchors structure, borders, secondary text, and low-priority framing elements.
+
+### Surface Tones & Grounding
+- **Canvas Base:** `#F8FAFC` provides a clinical, crisp backdrop.
+- **Layer 1 Surface (Cards, Panels):** `#FFFFFF` delivers clear lift above the canvas.
+- **Layer 2 Surface (Sub-containers, Inset Fields):** `#F1F5F9`.
+- **Text Primary:** `#0F172A` offers razor-sharp legibility across all viewport conditions.
+- **Text Secondary:** `#475569`.
+- **Hairline Dividers:** `#E2E8F0`.
+
+## Typography
+
+The typographic hierarchy juxtaposes the geometric warmth of **Plus Jakarta Sans** with the mechanical clarity of **Inter**.
+
+Headlines leverage tight negative tracking and confident weight distribution to create distinct product waypoints. Microcopy, skill tags, metadata badges, and form controls utilize **Inter** at medium and semibold weights to maintain legibility in dense comparative matrices.
+
+## Layout & Spacing
+
+The layout model runs on a 12-column responsive fluid grid anchored by strict 4px/8px incremental spacing steps.
+
+- **Desktop (1024px+):** 12-column grid, `margin: 2rem`, `gutter: 1.5rem`, maximum application canvas width capped at `1280px` for optimal data density.
+- **Tablet (640px - 1023px):** 8-column grid, `margin: 1.5rem`, `gutter: 1.25rem`. Two-column exchange modules reflow to stacked pairings.
+- **Mobile (<640px):** 4-column grid, `margin: 1rem`, `gutter: 1rem`. Exchange cards collapse into vertical sequence cards with touch-priority anchors.
+
+Internal component gaps follow strict tokens: `space-xs` (4px) for related icon/label pairings, `space-sm` (8px) for badge arrays, `space-md` (16px) for intra-card content blocks, `space-lg` (24px) for distinct card sections, and `space-xl` (40px) for macro card stacking.
+
+## Elevation & Depth
+
+Visual hierarchy combines low-contrast borders with atmospheric ambient shadows. Surfaces rely on white elevations placed over a cool slate base (`#F8FAFC`).
+
+- **Base Plate (Level 0):** `0 0 0 0 transparent`, framed with an explicit 1px stroke of `#E2E8F0`.
+- **Card Default (Level 1):** `0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03)`, encased in a border of `rgba(226, 232, 240, 0.8)`.
+- **Active & Hover Card (Level 2):** `0 10px 15px -3px rgba(83, 56, 232, 0.05), 0 4px 6px -4px rgba(15, 23, 42, 0.04)`, border shifts to `rgba(83, 56, 232, 0.25)`.
+- **Floating Overlays & Modals (Level 3):** `0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04)`.
+
+## Shapes
+
+The geometric signature uses deliberate, confident rounding across all module boundaries:
+
+- **Interactive Tags & Badges:** `rounded-lg` (8px) to `rounded-xl` (12px) for quick scanning.
+- **Cards & Data Modules:** `rounded-xl` (16px) to `rounded-2xl` (24px) for structural containers, framing reciprocal content sets into clear visual parcels.
+- **Action Controls & Inputs:** Uniformly set to `rounded-xl` (12px) to guarantee generous 44px+ mobile touch hitboxes.
+
+## Components
+
+### Buttons
+- **Primary:** Filled `#5338E8`, text `#FFFFFF`, font `label-md`. Height 44px (mobile 48px). Subtle inward shadow and scale down to `0.98` on click.
+- **Secondary (Direct Trade Action):** White background, 1.5px solid `#E2E8F0`, text `#0F172A`. Hover transitions border to `#5338E8` and tinting to `rgba(83, 56, 232, 0.04)`.
+- **Success (Commit Swap):** Filled `#059669`, text `#FFFFFF`. Applied when finalizing trade terms.
+
+### Chips & Skill Badges
+- **Offer Chip (What user teaches):** `#F1F5F9` background, `#334155` text, left-aligned dot in `#5338E8`.
+- **Request Chip (What user wants):** Background `rgba(5, 150, 105, 0.08)`, border `1px solid rgba(5, 150, 105, 0.2)`, text `#047857`.
+
+### Cards & Trade Matrices
+- **Skill Swap Card:** Surface `#FFFFFF`, border `1px solid #E2E8F0`, `border-radius: 20px`. Top section showcases user identity, credibility score, and reciprocal balance ratio. Middle section splits into a two-column balance sheet ("Offers" vs "Seeks") with a centered bidirectional swap indicator.
+
+### Barter Indicator (Platform Custom)
+- A bidirectional arrow node placed between offered and requested skills. When an exchange balance is equal (1:1 direct hour-for-hour swap), the indicator glows in `#059669`. When unbalanced or pending custom terms, it renders in `#64748B`.
+
+### Form Fields & Inputs
+- Background `#FFFFFF`, border `1.5px solid #CBD5E1`, padding `10px 14px`. Text `#0F172A`. Focus state shifts border directly to `#5338E8` with a `0 0 0 3px rgba(83, 56, 232, 0.12)` halo.
+
+### Selection Controls (Checkboxes & Radios)
+- 20px dimension boxes with `rounded-md` (checkbox) or circular (radio) contours. Unchecked: `1.5px solid #94A3B8`. Checked: solid `#5338E8` fill with a crisp white tick mark.

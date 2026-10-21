@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-tertiary-fixed": "#2a1700", "on-primary-fixed": "#160066", "outline-variant": "#c8c4d8", "tertiary-fixed": "#ffddb8", "error-container": "#ffdad6", "inverse-surface": "#213145", "on-tertiary-fixed-variant": "#653e00", "error": "#ba1a1a", "surface-variant": "#d3e4fe", "on-surface-variant": "#474556", "primary-fixed-dim": "#c6bfff", "background": "#f8f9ff", "surface-container-high": "#dce9ff", "on-primary": "#ffffff", "on-tertiary": "#ffffff", "tertiary": "#613c00", "on-secondary-fixed": "#002114", "inverse-primary": "#c6bfff", "surface-container-highest": "#d3e4fe", "on-secondary": "#ffffff", "on-secondary-container": "#00714e", "secondary-container": "#82f5c1", "primary-fixed": "#e4dfff", "on-tertiary-container": "#ffcb8d", "primary-container": "#5338e8", "on-secondary-fixed-variant": "#005137", "surface-tint": "#563ceb", "outline": "#787587", "on-primary-container": "#d4ceff", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#3d13d4", "inverse-on-surface": "#eaf1ff", "on-surface": "#0b1c30", "surface-bright": "#f8f9ff", "surface-dim": "#cbdbf5", "secondary-fixed": "#85f8c4", "primary": "#3a09d2", "surface": "#f8f9ff", "surface-container-low": "#eff4ff", "tertiary-fixed-dim": "#ffb95f", "secondary-fixed-dim": "#68dba9", "surface-container": "#e5eeff", "on-error-container": "#93000a", "on-background": "#0b1c30", "on-error": "#ffffff", "tertiary-container": "#815100", "secondary": "#006c4a" }, borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, spacing: { "margin": "2rem", "margin-mobile": "1rem", "space-xs": "0.25rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-lg": "1.5rem", "gutter-mobile": "1rem", "space-sm": "0.5rem", "space-md": "1rem" }, fontFamily: { "display-hero": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Plus Jakarta Sans"], "body-sm": ["Inter"], "headline-sm": ["Plus Jakarta Sans"], "display-hero-mobile": ["Plus Jakarta Sans"], "body-lg": ["Inter"], "headline-md": ["Plus Jakarta Sans"], "title-md": ["Inter"], "label-sm": ["Inter"], "body-md": ["Inter"], "headline-lg": ["Plus Jakarta Sans"], "label-md": ["Inter"] }, fontSize: { "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "headline-lg-mobile": ["26px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "700" }], "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-hero-mobile": ["34px", { "lineHeight": "40px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "headline-md": ["22px", { "lineHeight": "28px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "headline-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior:none;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-container selection:text-on-secondary-container"><header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] pt-safe"><div class="h-16 px-gutter-mobile flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="TradeSkill Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeyQ1tGsSYAkUZgMALz4BWbFlEW_Efo1FrvNPH6WV-haKFO7XfDBzV7YyBs5ZQZPnRQHL4UvtouDTmEiy6Xc7Q5lvAtqVY7diyhYDXz8mDI8RrZOl3hjtrHcL965ZptKoPfDYxkB2GsVO2pR04AWwJrdu2VvqHF2qaBDUcnSvUdGq2YhJJejXJk3fNuE9SxaVHu5F2CnH6LoQmDHC__gvLueEqYME7oTNiVnTEySXmSaiWAarq_hM"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary leading-tight font-bold tracking-tight">TradeSkill</span><span class="font-label-sm text-label-sm text-on-surface-variant leading-none">Skills</span></div></div><div class="flex items-center gap-space-xs"><button aria-label="Search skills" class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95"><span class="material-symbols-outlined text-[22px]">search</span></button><button aria-label="Notifications" class="w-11 h-11 relative flex items-center justify-center rounded-full text-on-surface-variant hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary/20 active:scale-95"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface"></span></button><a aria-label="Open User Profile" class="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-95 ml-space-xs" data-path="dashboard" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqYkvUVDx90OoMqyUCT73GI1Co1tq7PlgE8pCbafW-s5bhJ7c_l2JIs92y7OpPo1VYBymEAJWQa9P2De8Q_0VeLughqetvKz0BkfXlQfsuI1vHcEO2xvqTBxAu87yMK_ss4Xteq1Js6WYUgBfPqCK2oo-xqYSwdy9QU0kJiLmqrQcvpYwOZFlGscV8UXFDIXd20j9E-ODfY45xbgYfh7QGd4fE22ZaAgDuzMFFdXbQnnmd3jDukoA"/></a></div></div></header><main class="flex-1 flex flex-col relative w-full pt-16 pb-24 bg-surface min-h-screen"><div class="flex flex-col w-full pb-8">
+<!-- Interactive Top Action Area -->
+<div class="px-margin-mobile pt-4 pb-2">
+<div class="relative overflow-hidden rounded-2xl bg-surface-container-high p-4 shadow-sm flex items-center justify-between">
+<div class="flex flex-col z-10 max-w-[65%]">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider mb-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Zero-Cash Marketplace
+        </span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Got a mastery to share?</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Offer your knowledge, unlock a new craft.</p>
+</div>
+<button class="z-10 h-11 px-4 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-md flex items-center gap-1.5 active:scale-95 transition-transform shrink-0" id="open-listing-modal">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>List Skill</span>
+</button>
+<div class="absolute -right-6 -bottom-6 w-28 h-28 rounded-full bg-primary-fixed/40 blur-xl pointer-events-none"></div>
+</div>
+</div>
+<!-- Search & Filter Controls -->
+<div class="px-margin-mobile pt-3 pb-2 sticky top-16 bg-surface/90 backdrop-blur-md z-30 space-y-3">
+<!-- Search Input -->
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full h-12 pl-11 pr-10 rounded-xl bg-surface-container-lowest text-on-surface font-body-md text-body-md shadow-sm placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all" id="search-input" placeholder="Search skills, e.g., 'Rust', 'UI Design', 'Japanese'..." type="search"/>
+<button class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant/70 hover:text-primary text-[20px] active:scale-90">tune</button>
+</div>
+<!-- Category Filter Pills (Horizontal Scroll) -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar -mx-margin-mobile px-margin-mobile">
+<button class="category-pill active h-8 px-3.5 rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-sm transition-all" data-category="all">
+        All Disciplines
+      </button>
+<button class="category-pill h-8 px-3.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high active:scale-95 transition-all" data-category="tech">
+        Tech &amp; Code
+      </button>
+<button class="category-pill h-8 px-3.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high active:scale-95 transition-all" data-category="creative">
+        Creative &amp; Design
+      </button>
+<button class="category-pill h-8 px-3.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high active:scale-95 transition-all" data-category="languages">
+        Languages
+      </button>
+<button class="category-pill h-8 px-3.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high active:scale-95 transition-all" data-category="music">
+        Music &amp; Arts
+      </button>
+<button class="category-pill h-8 px-3.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md whitespace-nowrap hover:bg-surface-container-high active:scale-95 transition-all" data-category="business">
+        Business &amp; Strategy
+      </button>
+</div>
+</div>
+<!-- High-Demand Disciplines Spotlight -->
+<div class="px-margin-mobile pt-3">
+<div class="flex items-center justify-between mb-2.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Trending Trades</h3>
+<span class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-0.5">
+        Live swaps <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Tile 1 -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between h-28 relative overflow-hidden group active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-xl bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full font-bold">142 active</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface block leading-tight">Full-Stack &amp; AI</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Python, Rust, Agents</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-12 h-12 bg-primary/5 rounded-full blur-md"></div>
+</div>
+<!-- Tile 2 -->
+<div class="p-3 rounded-2xl bg-surface-container-lowest shadow-sm flex flex-col justify-between h-28 relative overflow-hidden group active:scale-[0.98] transition-transform cursor-pointer">
+<div class="flex items-center justify-between">
+<div class="w-8 h-8 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary-container">
+<span class="material-symbols-outlined text-[20px]">brush</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/40 px-2 py-0.5 rounded-full font-bold">89 active</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface block leading-tight">Brand &amp; Figma</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Design systems, 3D</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-12 h-12 bg-tertiary-fixed/30 rounded-full blur-md"></div>
+</div>
+</div>
+</div>
+<!-- Active Skill Listings -->
+<div class="px-margin-mobile pt-6">
+<div class="flex items-center justify-between mb-3">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Available Exchanges</h3>
+<span class="h-5 px-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm flex items-center">38 ready</span>
+</div>
+<button class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-0.5">
+        Sort: <span class="text-primary font-semibold">Best Match</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+<!-- Cards Container -->
+<div class="space-y-4" id="listings-container">
+<!-- Exchange Card 1 -->
+<article class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm space-y-3.5 transition-all">
+<!-- Top header info -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-full object-cover shadow-xs" data-alt="Close-up candid portrait of an expressive female software engineer with curly brown hair wearing navy knitwear in a sunlit loft design studio, natural warm cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxMNrTaRFbBT66EiRDqLQiokn1_8jlOvL3R_yAAFQMAUn411-wY1n3mhMKv5Eu09NbH0ZQcDV78LrhtQ_0ZpKKyqkeBeevpMaL_c5x0dbVn8Gqd-SFJd4sHS-jHSsRDgszwxBeau5NPcD7DbyY14mbG3NyjrvkXfBmaZ2EUXuXPy-eluEf59O_syxLKNZR2H_mu2IHmZBcfMxCk-At2pQyiw84JHlWKgTAuTauBh4P0ryqMyeb8Xs"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-on-surface">Elena Rostova</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" title="Identity Verified">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                4.9 (24 swaps)
+              </span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-sm text-label-sm font-bold">
+            Intermediate
+          </span>
+</div>
+<!-- Trade Matrix Component -->
+<div class="p-3 rounded-xl bg-surface-container-low space-y-2 relative">
+<!-- Teaches block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">school</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Teaches</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">Modern React &amp; TypeScript Architecture</p>
+</div>
+</div>
+<!-- Bidirectional Center Indicator -->
+<div class="flex items-center justify-center -my-1">
+<div class="h-6 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1 font-bold shadow-xs">
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+              1:1 Mutual Exchange
+            </div>
+</div>
+<!-- Seeks block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">psychology</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Looking for</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">Conversational Italian &amp; Pronunciation</p>
+</div>
+</div>
+</div>
+<!-- Format Badges & Commitment -->
+<div class="flex flex-wrap items-center gap-2 pt-0.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">videocam</span>
+            1:1 Video Call
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+            1 hr / week
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-secondary-container/50 text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[15px]">timer</span>
+            4-week cycle
+          </span>
+</div>
+<!-- Card Action CTA -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="preview-btn h-11 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors active:scale-95" data-author="Elena Rostova" data-skill="Modern React &amp; TypeScript Architecture">
+<span class="material-symbols-outlined text-[18px]">info</span>
+            Curriculum
+          </button>
+<button class="trade-btn h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-sm flex items-center justify-center gap-1.5 active:scale-95 transition-transform" data-author="Elena Rostova" data-teach="React &amp; TS">
+<span>Request Trade</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Exchange Card 2 -->
+<article class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm space-y-3.5 transition-all">
+<!-- Top header info -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-full object-cover shadow-xs" data-alt="Portrait of an approachable Japanese designer in his early thirties with clean round spectacles and minimalist dark linen shirt smiling warmly inside a bright wood workshop studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi9a3oDf26lGVFZU0YfEdf282taP7MkaxgL6dRoBuMczdz1eUmTeacPz9gTHIn9NSsJsQrdrJRuZvDHNLH0OjWga2yk5Q38IIIsgjaSLoxTASf9mtReGY2G6YvRw3vKeKd_Z4oTPQFrSrGE9Tg7WOCXrpyE7r4pKytCPZ-i7rvijiaOVifhqCaMPNwCyhq4aLYjADWxNpe6mQm4sH3AJxPjrbvBddr5Hu-u8_t2xemq5nPgfW82yc"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-on-surface">Kenji Takahashi</span>
+<span class="material-symbols-outlined text-secondary text-[16px]" title="Identity Verified">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                5.0 (18 swaps)
+              </span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-bold">
+            Master
+          </span>
+</div>
+<!-- Trade Matrix Component -->
+<div class="p-3 rounded-xl bg-surface-container-low space-y-2 relative">
+<!-- Teaches block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">school</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Teaches</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">Design Systems &amp; Figma Component Mastery</p>
+</div>
+</div>
+<!-- Bidirectional Center Indicator -->
+<div class="flex items-center justify-center -my-1">
+<div class="h-6 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1 font-bold shadow-xs">
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+              1:1 Mutual Exchange
+            </div>
+</div>
+<!-- Seeks block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">psychology</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Looking for</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">B2B SaaS Growth &amp; GTM Positioning</p>
+</div>
+</div>
+</div>
+<!-- Format Badges & Commitment -->
+<div class="flex flex-wrap items-center gap-2 pt-0.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">rate_review</span>
+            Async Video Critiques
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+            2 hrs / week
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">event_repeat</span>
+            Bi-weekly review
+          </span>
+</div>
+<!-- Card Action CTA -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="preview-btn h-11 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors active:scale-95" data-author="Kenji Takahashi" data-skill="Design Systems &amp; Figma Component Mastery">
+<span class="material-symbols-outlined text-[18px]">info</span>
+            Curriculum
+          </button>
+<button class="trade-btn h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-sm flex items-center justify-center gap-1.5 active:scale-95 transition-transform" data-author="Kenji Takahashi" data-teach="Figma Design Systems">
+<span>Request Trade</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+<!-- Exchange Card 3 -->
+<article class="p-4 rounded-2xl bg-surface-container-lowest shadow-sm space-y-3.5 transition-all">
+<!-- Top header info -->
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-2.5">
+<img class="w-10 h-10 rounded-full object-cover shadow-xs" data-alt="Warm portrait of a Latin American male musician holding an acoustic guitar neck, warm golden hour sun filtering through a cozy domestic music room filled with plants and vinyl records" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpEqpkXnnphGckSsuyc-tS5SO-rW7M3ewnsTYxYZvBtOT5gI0le7t7kRZZ4XmFcuUwqjHKb8BB_oe2g81gLhVrwJIkC6scaxQfUykLghXDqn5uXk7BmjY2eQ1K9SO-NBf_ZSFrF_V9aEvglwkYL8oe5CGE0SsocJMKnmyiJgU3RtjxrH9t4tfgncq-nfDhKPNyfgrvZtoXhPC4p4I_H9uDlN7N0o_xcaFhieTnN0WBDsRzMQ7yB_M"/>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-title-md text-title-md text-on-surface">Mateo Silva</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                4.8 (31 swaps)
+              </span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-bold">
+            Beginner Friendly
+          </span>
+</div>
+<!-- Trade Matrix Component -->
+<div class="p-3 rounded-xl bg-surface-container-low space-y-2 relative">
+<!-- Teaches block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">school</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Teaches</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">Fingerstyle Acoustic Guitar &amp; Chord Voicings</p>
+</div>
+</div>
+<!-- Bidirectional Center Indicator -->
+<div class="flex items-center justify-center -my-1">
+<div class="h-6 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm flex items-center gap-1 font-bold shadow-xs">
+<span class="material-symbols-outlined text-[14px]">swap_horiz</span>
+              1:1 Mutual Exchange
+            </div>
+</div>
+<!-- Seeks block -->
+<div class="flex items-start gap-2">
+<div class="w-5 h-5 rounded-md bg-secondary text-on-secondary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[13px]">psychology</span>
+</div>
+<div class="min-w-0 flex-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider block">Looking for</span>
+<p class="font-title-md text-title-md text-on-surface font-semibold truncate">Audio Editing &amp; Podcast Mastering (Logic Pro)</p>
+</div>
+</div>
+</div>
+<!-- Format Badges & Commitment -->
+<div class="flex flex-wrap items-center gap-2 pt-0.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">headset</span>
+            Live Jam Practice
+          </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+            1.5 hrs / week
+          </span>
+</div>
+<!-- Card Action CTA -->
+<div class="grid grid-cols-2 gap-2 pt-1">
+<button class="preview-btn h-11 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md flex items-center justify-center gap-1 transition-colors active:scale-95" data-author="Mateo Silva" data-skill="Fingerstyle Acoustic Guitar &amp; Chord Voicings">
+<span class="material-symbols-outlined text-[18px]">info</span>
+            Curriculum
+          </button>
+<button class="trade-btn h-11 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-sm flex items-center justify-center gap-1.5 active:scale-95 transition-transform" data-author="Mateo Silva" data-teach="Acoustic Guitar">
+<span>Request Trade</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</article>
+</div>
+</div>
+<!-- Bottom Sheet / Drawer: Skill Details Curriculum Modal (Hidden by default) -->
+<div class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 flex flex-col justify-end" id="curriculum-drawer">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-xs" id="drawer-backdrop"></div>
+<!-- Drawer Content Surface -->
+<div class="relative bg-surface-container-lowest rounded-t-3xl p-5 shadow-2xl max-h-[751px] overflow-y-auto transform translate-y-full transition-transform duration-300 flex flex-col space-y-4 pointer-events-auto">
+<!-- Drag Handle -->
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto -mt-1"></div>
+<!-- Drawer Header -->
+<div class="flex items-start justify-between gap-3">
+<div>
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Skill Deep Dive</span>
+<h3 class="font-headline-md text-headline-md text-on-surface leading-tight mt-0.5" id="drawer-title">Modern React &amp; TypeScript Architecture</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5" id="drawer-instructor">Offered by Elena Rostova • Top 5% Peer Mentor</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant active:scale-90" id="close-drawer-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<!-- Learning Path Steps -->
+<div class="space-y-3 pt-2">
+<h4 class="font-title-md text-title-md text-on-surface font-semibold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">menu_book</span>
+          What You Will Master (4 Sessions)
+        </h4>
+<div class="space-y-2.5">
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center shrink-0">1</span>
+<div>
+<span class="font-title-md text-title-md text-on-surface block font-medium">Session 1: Strict Types &amp; Custom Hooks</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Eliminating runtime crashes, creating declarative state engines.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center shrink-0">2</span>
+<div>
+<span class="font-title-md text-title-md text-on-surface block font-medium">Session 2: Performance Profiling &amp; Hydration</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Preventing re-render waterfalls, tree-shaking patterns.</p>
+</div>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low flex items-start gap-3">
+<span class="w-6 h-6 rounded-full bg-primary text-on-primary font-label-sm text-label-sm font-bold flex items-center justify-center shrink-0">3</span>
+<div>
+<span class="font-title-md text-title-md text-on-surface block font-medium">Session 3: Design Tokens &amp; Component Encapsulation</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Building a production component library with variant props.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Prerequisites & Outcomes -->
+<div class="grid grid-cols-2 gap-2.5 pt-1">
+<div class="p-3 rounded-xl bg-surface-container flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-bold uppercase">Prerequisites</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Basic JavaScript (ES6+), fundamental HTML/CSS</span>
+</div>
+<div class="p-3 rounded-xl bg-secondary-container/30 flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Mutual Deliverable</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">1 Shipped Mini-Project + Code Review Sign-off</span>
+</div>
+</div>
+<!-- Bottom action on drawer -->
+<div class="pt-2">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-md flex items-center justify-center gap-2 active:scale-95 transition-transform" id="drawer-trade-action">
+<span class="material-symbols-outlined text-[20px]">handshake</span>
+<span>Initiate Trade with this Mentor</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Add Skill Modal Sheet -->
+<div class="fixed inset-0 z-50 pointer-events-none transition-opacity duration-300 opacity-0 flex flex-col justify-end" id="listing-modal">
+<!-- Backdrop -->
+<div class="absolute inset-0 bg-inverse-surface/40 backdrop-blur-xs" id="modal-backdrop"></div>
+<!-- Sheet Form -->
+<div class="relative bg-surface-container-lowest rounded-t-3xl p-5 shadow-2xl max-h-[795px] overflow-y-auto transform translate-y-full transition-transform duration-300 flex flex-col space-y-4 pointer-events-auto">
+<div class="w-12 h-1.5 bg-outline-variant/60 rounded-full mx-auto -mt-1"></div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">List a Skill Trade</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Describe what you teach and what you want back.</p>
+</div>
+<button class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant active:scale-90" id="close-modal-btn">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<form class="space-y-3.5 pt-1" id="create-trade-form" onsubmit="event.preventDefault();">
+<!-- Teach Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">I will teach</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="e.g. Prompt Engineering, Portrait Photography" required="" type="text"/>
+</div>
+<!-- Want Field -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-1">In exchange for learning</label>
+<input class="w-full h-11 px-3.5 rounded-xl bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none focus:ring-2 focus:ring-primary/20" placeholder="e.g. Advanced Excel, Spanish Conversation" required="" type="text"/>
+</div>
+<!-- Format & Commitment Grid -->
+<div class="grid grid-cols-2 gap-2.5">
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Format</label>
+<select class="w-full h-11 px-3 rounded-xl bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none">
+<option>1:1 Live Video</option>
+<option>Async Reviews</option>
+<option>Project Collab</option>
+</select>
+</div>
+<div>
+<label class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Cadence</label>
+<select class="w-full h-11 px-3 rounded-xl bg-surface-container text-on-surface font-body-md text-body-md focus:outline-none">
+<option>1 hr / week</option>
+<option>2 hrs / week</option>
+<option>One-off 90m</option>
+</select>
+</div>
+</div>
+<!-- Direct Trade Commitment Callout -->
+<div class="p-3 rounded-xl bg-secondary-container/30 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[22px]">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-secondary-fixed-variant leading-snug">
+            Protected by TradeSkill's 1:1 Reciprocal Commitment. No credits or currency required.
+          </p>
+</div>
+<!-- Submit Button -->
+<button class="w-full h-12 mt-2 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-md flex items-center justify-center gap-1.5 active:scale-95 transition-transform" id="submit-trade-btn" type="submit">
+<span class="material-symbols-outlined text-[18px]">publish</span>
+<span>Publish Trade Listing</span>
+</button>
+</form>
+</div>
+</div>
+<!-- Toast Notification Feedback -->
+<div class="fixed bottom-20 inset-x-4 max-w-sm mx-auto z-50 pointer-events-none transition-all duration-300 opacity-0 translate-y-4" id="toast-message">
+<div class="p-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-xl flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary-fixed text-[20px]">check_circle</span>
+<span class="font-body-sm text-body-sm font-medium" id="toast-text">Trade request sent successfully!</span>
+</div>
+</div>
+</div>
+<script>
+  // Filter pills state
+  const pills = document.querySelectorAll('.category-pill');
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => {
+        p.classList.remove('bg-primary', 'text-on-primary', 'active');
+        p.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      pill.classList.remove('bg-surface-container', 'text-on-surface-variant');
+      pill.classList.add('bg-primary', 'text-on-primary', 'active');
+    });
+  });
+
+  // Curriculum Drawer Controls
+  const curriculumDrawer = document.getElementById('curriculum-drawer');
+  const drawerPanel = curriculumDrawer.querySelector('div:nth-child(2)');
+  const drawerBackdrop = document.getElementById('drawer-backdrop');
+  const closeDrawerBtn = document.getElementById('close-drawer-btn');
+  const previewButtons = document.querySelectorAll('.preview-btn');
+  const drawerTitle = document.getElementById('drawer-title');
+  const drawerInstructor = document.getElementById('drawer-instructor');
+
+  function openDrawer(title, instructor) {
+    drawerTitle.textContent = title;
+    drawerInstructor.textContent = `Offered by ${instructor} • Top Verified Mentor`;
+    curriculumDrawer.classList.remove('pointer-events-none', 'opacity-0');
+    curriculumDrawer.classList.add('opacity-100');
+    drawerPanel.classList.remove('translate-y-full');
+    drawerPanel.classList.add('translate-y-0');
+  }
+
+  function closeDrawer() {
+    curriculumDrawer.classList.add('opacity-0');
+    drawerPanel.classList.remove('translate-y-0');
+    drawerPanel.classList.add('translate-y-full');
+    setTimeout(() => {
+      curriculumDrawer.classList.add('pointer-events-none');
+    }, 300);
+  }
+
+  previewButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const skill = btn.getAttribute('data-skill');
+      const author = btn.getAttribute('data-author');
+      openDrawer(skill, author);
+    });
+  });
+
+  closeDrawerBtn.addEventListener('click', closeDrawer);
+  drawerBackdrop.addEventListener('click', closeDrawer);
+
+  // Quick Listing Modal Controls
+  const listingModal = document.getElementById('listing-modal');
+  const modalPanel = listingModal.querySelector('div:nth-child(2)');
+  const modalBackdrop = document.getElementById('modal-backdrop');
+  const openListingBtn = document.getElementById('open-listing-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const createForm = document.getElementById('create-trade-form');
+
+  function openModal() {
+    listingModal.classList.remove('pointer-events-none', 'opacity-0');
+    listingModal.classList.add('opacity-100');
+    modalPanel.classList.remove('translate-y-full');
+    modalPanel.classList.add('translate-y-0');
+  }
+
+  function closeModal() {
+    listingModal.classList.add('opacity-0');
+    modalPanel.classList.remove('translate-y-0');
+    modalPanel.classList.add('translate-y-full');
+    setTimeout(() => {
+      listingModal.classList.add('pointer-events-none');
+    }, 300);
+  }
+
+  openListingBtn.addEventListener('click', openModal);
+  closeModalBtn.addEventListener('click', closeModal);
+  modalBackdrop.addEventListener('click', closeModal);
+
+  // Toast feedback helper
+  const toast = document.getElementById('toast-message');
+  const toastText = document.getElementById('toast-text');
+
+  function triggerToast(message) {
+    toastText.textContent = message;
+    toast.classList.remove('opacity-0', 'translate-y-4');
+    toast.classList.add('opacity-100', 'translate-y-0');
+    setTimeout(() => {
+      toast.classList.remove('opacity-100', 'translate-y-0');
+      toast.classList.add('opacity-0', 'translate-y-4');
+    }, 2800);
+  }
+
+  // Request Trade Buttons micro-interaction
+  const tradeButtons = document.querySelectorAll('.trade-btn');
+  tradeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const author = button.getAttribute('data-author');
+      triggerToast(`Trade proposal sent to ${author}!`);
+    });
+  });
+
+  // Drawer trade action
+  document.getElementById('drawer-trade-action').addEventListener('click', () => {
+    closeDrawer();
+    triggerToast("Exchange requested! You will hear back in < 24h.");
+  });
+
+  // Submit Listing Form action
+  createForm.addEventListener('submit', () => {
+    closeModal();
+    triggerToast("Your skill trade listing has been published!");
+    createForm.reset();
+  });
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/90 backdrop-blur-xl shadow-[0_-2px_12px_rgba(11,28,48,0.05)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">swap_horiz</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center w-14 h-14 transition-all active:scale-95 text-primary font-semibold" data-path="skills" href="#"><span class="material-symbols-outlined text-[24px]">explore</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Skills</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="people" href="#"><span class="material-symbols-outlined text-[24px]">group</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">People</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="sessions" href="#"><span class="material-symbols-outlined text-[24px]">event_available</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Sessions</span></a><a class="flex flex-col items-center justify-center w-14 h-14 text-on-surface-variant transition-all hover:text-primary active:scale-95" data-path="dashboard" href="#"><span class="material-symbols-outlined text-[24px]">equalizer</span><span class="font-label-sm text-label-sm tracking-tight mt-0.5">Dashboard</span></a></div></nav></body></html>
