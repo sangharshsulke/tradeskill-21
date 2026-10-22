@@ -1,6 +1,24 @@
 import React, { useState } from 'react';
 import { SessionItem } from '../types';
 
+const STATUS_STYLES: Record<SessionItem['status'], { label: string; className: string }> = {
+  'starting-soon': { label: 'Starting Soon', className: 'bg-secondary/10 text-secondary' },
+  confirmed: { label: 'Confirmed', className: 'bg-secondary/10 text-secondary' },
+  rescheduled: { label: 'Rescheduled', className: 'bg-primary/10 text-primary' },
+  'needs-rescheduling': { label: 'Needs Rescheduling', className: 'bg-tertiary-fixed text-on-tertiary-fixed' },
+  pending: { label: 'Awaiting Reply', className: 'bg-surface-container-high text-on-surface-variant' },
+  completed: { label: 'Completed', className: 'bg-secondary/10 text-secondary' },
+};
+
+const StatusBadge: React.FC<{ status: SessionItem['status'] }> = ({ status }) => {
+  const s = STATUS_STYLES[status] ?? STATUS_STYLES.confirmed;
+  return (
+    <span className={`${s.className} px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold shrink-0`}>
+      {s.label}
+    </span>
+  );
+};
+
 interface SessionsViewProps {
   upcomingSessions: SessionItem[];
   pendingRequests: SessionItem[];
@@ -12,6 +30,7 @@ interface SessionsViewProps {
   onAcceptPending: (session: SessionItem) => void;
   onDeclinePending: (session: SessionItem) => void;
   onCancelSession: (session: SessionItem) => void;
+  onRateSession: (session: SessionItem) => void;
   onShowToast: (msg: string) => void;
 }
 
@@ -26,8 +45,12 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
   onAcceptPending,
   onDeclinePending,
   onCancelSession,
+  onRateSession,
   onShowToast,
 }) => {
+  const hoursSwapped = Math.round(
+    completedSessions.reduce((sum, s) => sum + s.teachMins + s.peerMins, 0) / 60
+  );
   const [activeTab, setActiveTab] = useState<'upcoming' | 'pending' | 'history'>('upcoming');
 
   return (
@@ -245,9 +268,7 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
                         <p className="font-body-sm text-body-sm text-on-surface-variant">{session.timeLabel}</p>
                       </div>
                     </div>
-                    <span className="bg-secondary/10 text-secondary px-2.5 py-1 rounded-full font-label-sm text-label-sm font-semibold">
-                      Confirmed
-                    </span>
+                    <StatusBadge status={session.status} />
                   </div>
 
                   <div className="bg-surface-container-low rounded-lg p-2.5 text-body-sm font-body-sm flex items-center justify-between">
@@ -257,7 +278,7 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
                         <strong>{session.peerTeaches}</strong> ⇄ <strong>{session.youTeach}</strong>
                       </span>
                     </div>
-                    <span className="font-label-sm text-label-sm text-on-surface-variant shrink-0">45m each</span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant shrink-0">{session.teachMins}m each</span>
                   </div>
 
                   <div className="flex items-center justify-end gap-2 pt-1">
@@ -307,9 +328,7 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
                         <p className="font-body-sm text-body-sm text-on-surface-variant">{session.timeLabel}</p>
                       </div>
                     </div>
-                    <span className="bg-tertiary-fixed text-on-tertiary-fixed font-semibold px-2.5 py-1 rounded-full font-label-sm text-label-sm">
-                      Needs Rescheduling
-                    </span>
+                    <StatusBadge status={session.status} />
                   </div>
 
                   <div className="bg-surface-container-low rounded-lg p-2.5 text-body-sm font-body-sm flex items-center justify-between">
@@ -319,7 +338,7 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
                         <strong>{session.peerTeaches}</strong> ⇄ <strong>{session.youTeach}</strong>
                       </span>
                     </div>
-                    <span className="font-label-sm text-label-sm text-on-surface-variant shrink-0">30m each</span>
+                    <span className="font-label-sm text-label-sm text-on-surface-variant shrink-0">{session.teachMins}m each</span>
                   </div>
 
                   {session.note && (
@@ -448,7 +467,7 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
         <div className="flex flex-col space-y-space-md">
           <div className="flex items-center justify-between">
             <span className="font-headline-sm text-headline-sm text-on-surface">Past Exchanges</span>
-            <span className="font-label-md text-label-md text-secondary font-semibold">18 Hours Swapped</span>
+            <span className="font-label-md text-label-md text-secondary font-semibold">{hoursSwapped} Hours Swapped</span>
           </div>
 
           {completedSessions.map((hist) => (
@@ -470,7 +489,9 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
                 </div>
                 <div className="flex items-center text-amber-500">
                   <span className="material-symbols-outlined text-[18px]">star</span>
-                  <span className="font-label-sm text-label-sm text-on-surface font-bold ml-1">5.0</span>
+                  <span className="font-label-sm text-label-sm text-on-surface font-bold ml-1">
+                    {hist.rating != null ? hist.rating.toFixed(1) : '—'}
+                  </span>
                 </div>
               </div>
 
@@ -486,14 +507,24 @@ export const SessionsView: React.FC<SessionsViewProps> = ({
 
               <div className="flex justify-between items-center pt-1">
                 <span className="font-label-sm text-label-sm text-secondary flex items-center gap-1 font-medium">
-                  <span className="material-symbols-outlined text-[14px]">verified</span> Mutual feedback logged
+                  <span className="material-symbols-outlined text-[14px]">verified</span>
+                  {hist.rating != null ? 'Your feedback logged' : 'Awaiting your feedback'}
                 </span>
-                <button
-                  onClick={() => onShowToast(`Displaying recap with ${hist.peerName}: 1:1 escrow settled.`)}
-                  className="font-label-md text-label-md text-primary font-semibold hover:underline cursor-pointer"
-                >
-                  View Recap
-                </button>
+                {hist.rating == null ? (
+                  <button
+                    onClick={() => onRateSession(hist)}
+                    className="font-label-md text-label-md text-primary font-semibold hover:underline cursor-pointer"
+                  >
+                    Rate Partner
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => onShowToast(`Displaying recap with ${hist.peerName}: 1:1 escrow settled.`)}
+                    className="font-label-md text-label-md text-primary font-semibold hover:underline cursor-pointer"
+                  >
+                    View Recap
+                  </button>
+                )}
               </div>
             </div>
           ))}

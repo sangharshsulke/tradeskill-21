@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScreenType } from '../types';
+import { CurrentUser, ScreenType } from '../types';
 
 interface HeaderProps {
   currentScreen: ScreenType;
@@ -7,6 +7,9 @@ interface HeaderProps {
   onOpenSearch?: () => void;
   onOpenNotifications: () => void;
   unreadCount?: number;
+  user: CurrentUser | null;
+  onLogin: () => void;
+  onLogout: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -14,7 +17,10 @@ export const Header: React.FC<HeaderProps> = ({
   onNavigate,
   onOpenSearch,
   onOpenNotifications,
-  unreadCount = 2,
+  unreadCount = 0,
+  user,
+  onLogin,
+  onLogout,
 }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -134,22 +140,43 @@ export const Header: React.FC<HeaderProps> = ({
                   <span className="material-symbols-outlined text-[18px] text-on-surface-variant">equalizer</span>
                   My Dashboard
                 </button>
+                {user && (
+                  <button
+                    onClick={() => {
+                      setMenuOpen(false);
+                      onLogout();
+                    }}
+                    className="w-full px-4 py-2.5 text-left font-label-md text-label-md text-on-surface hover:bg-surface-container-low flex items-center gap-2"
+                  >
+                    <span className="material-symbols-outlined text-[18px] text-on-surface-variant">logout</span>
+                    Log out
+                  </button>
+                )}
               </div>
             )}
           </div>
 
-          {/* User Profile Avatar */}
-          <button
-            aria-label="Open User Profile"
-            onClick={() => onNavigate('dashboard')}
-            className="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-95 ml-space-xs"
-          >
-            <img
-              alt="Elena Rostova Profile"
-              className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/20"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqYkvUVDx90OoMqyUCT73GI1Co1tq7PlgE8pCbafW-s5bhJ7c_l2JIs92y7OpPo1VYBymEAJWQa9P2De8Q_0VeLughqetvKz0BkfXlQfsuI1vHcEO2xvqTBxAu87yMK_ss4Xteq1Js6WYUgBfPqCK2oo-xqYSwdy9QU0kJiLmqrQcvpYwOZFlGscV8UXFDIXd20j9E-ODfY45xbgYfh7QGd4fE22ZaAgDuzMFFdXbQnnmd3jDukoA"
-            />
-          </button>
+          {/* User Profile Avatar / Login */}
+          {user ? (
+            <button
+              aria-label="Open User Profile"
+              onClick={() => onNavigate('dashboard')}
+              className="w-11 h-11 flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-primary/30 active:scale-95 ml-space-xs"
+            >
+              <img
+                alt={`${user.name} Profile`}
+                className="w-8 h-8 rounded-full object-cover ring-1 ring-primary/20"
+                src={user.avatar}
+              />
+            </button>
+          ) : (
+            <button
+              onClick={onLogin}
+              className="ml-space-xs px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md font-semibold active:scale-95"
+            >
+              Log in
+            </button>
+          )}
         </div>
       </div>
     </header>

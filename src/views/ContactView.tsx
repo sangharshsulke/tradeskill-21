@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { ScreenType } from '../types';
+import { ScreenType, SupportTicket } from '../types';
 
 interface ContactViewProps {
   onNavigate: (screen: ScreenType) => void;
   onOpenLiveChat: () => void;
+  onSubmitTicket: (ticket: SupportTicket) => Promise<{ ticketCode: string } | undefined>;
   onShowToast: (msg: string) => void;
 }
 
 export const ContactView: React.FC<ContactViewProps> = ({
   onNavigate,
   onOpenLiveChat,
+  onSubmitTicket,
   onShowToast,
 }) => {
   const [fullName, setFullName] = useState('Maya Chen');
@@ -18,6 +20,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [ticketSent, setTicketSent] = useState(false);
+  const [ticketCode, setTicketCode] = useState('');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
 
   const categories = [
@@ -51,16 +54,19 @@ export const ContactView: React.FC<ContactViewProps> = ({
     }
   ];
 
-  const handleSubmitDispatch = (e: React.FormEvent) => {
+  const handleSubmitDispatch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!message.trim()) return;
 
     setSubmitting(true);
-    setTimeout(() => {
-      setSubmitting(false);
+    const result = await onSubmitTicket({ fullName, email, category: selectedCategory, message });
+    setSubmitting(false);
+    if (result) {
+      setTicketCode(result.ticketCode);
       setTicketSent(true);
-      onShowToast('Support dispatch received! Assigned ticket #TS-8492.');
-    }, 700);
+      setMessage('');
+      onShowToast(`Support dispatch received! Assigned ticket #${result.ticketCode}.`);
+    }
   };
 
   const toggleFaq = (idx: number) => {
@@ -332,7 +338,7 @@ export const ContactView: React.FC<ContactViewProps> = ({
                 <div className="flex flex-col">
                   <span className="font-title-md text-title-md font-bold">Message received with priority!</span>
                   <span className="font-body-sm text-body-sm mt-0.5">
-                    Ticket #TS-8492 opened. A copy and direct responder link were sent to {email}.
+                    Ticket #{ticketCode} opened. A copy and direct responder link were sent to {email}.
                   </span>
                 </div>
               </div>

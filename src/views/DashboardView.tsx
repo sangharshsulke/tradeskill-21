@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { UserSkillItem, ExchangeInquiry } from '../types';
-import { currentUser } from '../data/mockData';
+import { UserSkillItem, ExchangeInquiry, CurrentUser, DashboardStats, ReviewItem } from '../types';
 
 interface DashboardViewProps {
+  user: CurrentUser | null;
+  stats: DashboardStats | null;
+  reviews: ReviewItem[];
+  onToggleAvailability: () => void;
   inquiries: ExchangeInquiry[];
   onAcceptInquiry: (inquiry: ExchangeInquiry) => void;
   onDeclineInquiry: (inquiry: ExchangeInquiry) => void;
@@ -24,12 +27,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onDeleteSkill,
   onEditSkill,
   onShowToast,
+  user,
+  stats,
+  reviews,
+  onToggleAvailability,
 }) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [newSkillType, setNewSkillType] = useState<'teach' | 'learn'>('teach');
   const [newSkillTitle, setNewSkillTitle] = useState('');
   const [newSkillDesc, setNewSkillDesc] = useState('');
-  const [userAvailable, setUserAvailable] = useState(true);
+  const userAvailable = user?.availableThisWeek ?? true;
 
   const handleSaveSkill = (e: React.FormEvent) => {
     e.preventDefault();
@@ -52,7 +59,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     setNewSkillTitle('');
     setNewSkillDesc('');
     setShowAddModal(false);
-    onShowToast(`Successfully published "${newItem.title}"!`);
   };
 
   const pendingInquiries = inquiries.filter((i) => i.status === 'pending');
@@ -65,15 +71,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
           <div className="flex items-center gap-space-sm">
             <div className="relative">
               <img
-                alt={currentUser.name}
+                alt={user?.name}
                 className="w-13 h-13 rounded-full object-cover shadow-sm bg-surface-container ring-2 ring-primary/20"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOOe56wIo3hc66N0LEzEJPSQum4loJtLMMSXi97ETp8zGtnVRJen1Rc0_D7locpOzDQx2xEW7HPL3Ow0uN-ZfuNv3FRNf_SkoSPTasaptobleIhVbHBxh7r50eyMUfrjcnAG6cAHD3Vsm6rU7Pg81TQM0JqaFhFlT5cUsgKpL4BPCVHvl1NDoVidFX7NbAnTC7ALIuPYyTR2RP94lcW3oPed3bM-R-0-MdSX3ZdPF8ZAngRjfQDmk"
+                src={user?.avatar}
               />
               <span
-                onClick={() => {
-                  setUserAvailable(!userAvailable);
-                  onShowToast(userAvailable ? 'Status set to Away' : 'Status set to Available this week');
-                }}
+                onClick={onToggleAvailability}
                 className={`absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full ring-2 ring-surface cursor-pointer ${
                   userAvailable ? 'bg-secondary' : 'bg-outline'
                 }`}
@@ -83,7 +86,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <div className="flex flex-col min-w-0">
               <div className="flex items-center gap-space-xs">
                 <h1 className="font-headline-sm text-headline-sm text-on-surface font-bold truncate">
-                  {currentUser.name}
+                  {user?.name}
                 </h1>
                 <span
                   className="material-symbols-outlined text-primary text-[18px]"
@@ -94,7 +97,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                 </span>
               </div>
               <p className="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
-                <span>{currentUser.title}</span>
+                <span>{user?.title}</span>
                 <span className="inline-block w-1 h-1 rounded-full bg-outline-variant"></span>
                 <span className={userAvailable ? 'text-secondary font-medium' : 'text-on-surface-variant'}>
                   {userAvailable ? 'Available this week' : 'Away'}
@@ -132,7 +135,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <div className="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
               <div className="flex items-baseline gap-0.5">
                 <span className="font-headline-md text-headline-md font-bold text-on-primary">
-                  {currentUser.trustScore}
+                  {stats?.trustScore ?? '—'}
                 </span>
                 <span className="font-label-sm text-label-sm text-secondary-container font-semibold">%</span>
               </div>
@@ -142,7 +145,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <div className="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
               <div className="flex items-baseline gap-0.5">
                 <span className="font-headline-md text-headline-md font-bold text-on-primary">
-                  {currentUser.timeSwappedHours}
+                  {stats?.timeSwappedHours ?? 0}
                 </span>
                 <span className="font-label-sm text-label-sm text-primary-fixed">h</span>
               </div>
@@ -152,7 +155,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <div className="bg-surface-container-lowest/10 backdrop-blur-sm rounded-xl p-space-xs flex flex-col items-center">
               <div className="flex items-baseline gap-0.5">
                 <span className="font-headline-md text-headline-md font-bold text-on-primary">
-                  {currentUser.activePeers}
+                  {stats?.activePeers ?? 0}
                 </span>
               </div>
               <span className="font-label-sm text-label-sm text-primary-fixed opacity-90 mt-0.5">Active Peers</span>
@@ -213,7 +216,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </div>
             <div className="mt-space-sm">
               <span className="font-headline-md text-headline-md text-on-surface font-bold block leading-none">
-                {currentUser.sessionsDone}
+                {stats?.sessionsDone ?? 0}
               </span>
               <span className="font-label-sm text-label-sm text-on-surface-variant mt-1 block">Sessions Done</span>
             </div>
@@ -232,7 +235,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             <div className="mt-space-sm">
               <div className="flex items-baseline gap-1">
                 <span className="font-headline-md text-headline-md text-on-surface font-bold block leading-none">
-                  {currentUser.peerRating}
+                  {stats ? stats.peerRating.toFixed(2) : '—'}
                 </span>
                 <span className="font-label-sm text-label-sm text-tertiary">★</span>
               </div>
@@ -456,83 +459,56 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               favorite
             </span>
           </div>
-          <span className="font-label-sm text-label-sm text-on-surface-variant">42 Verified Reviews</span>
+          <span className="font-label-sm text-label-sm text-on-surface-variant">{stats?.reviewCount ?? reviews.length} Verified Reviews</span>
         </div>
 
-        {/* Review Card 1 */}
-        <div className="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-xs border border-outline-variant/20">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-space-sm">
-              <img
-                alt="Soraya Chen"
-                className="w-9 h-9 rounded-full object-cover bg-surface-container"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3YNqvuWa24KUxsrByQg7UoNY8X4OszOHhloJTQCtxtqWfe8tO-7rZ9rhKuQZGtBPWVXu-bfjL93b3Lu13r0aEvfEYHj1ot80fh54Rf63G9qs7-9RcbRlVIdJ3G60jZkOr3K0CrM_CLCnw4NyxwrQ4HD4KMM3cb7oEOkeNOLd2DJd-QAW1AW99s8TIB4TybG11AGCeroAer7bjuoin_ESp_KdD4QJO6H24I1ZY3mq3j6nWgm7IG64"
-              />
-              <div className="min-w-0">
-                <h4 className="font-label-md text-label-md text-on-surface font-bold truncate">Soraya Chen</h4>
-                <span className="font-label-sm text-label-sm text-on-surface-variant block truncate">
-                  Swapped for: TypeScript AST Parsing
-                </span>
+        {reviews.length === 0 && (
+          <p className="font-body-sm text-body-sm text-on-surface-variant">
+            No reviews yet — complete a session and your partners can rate you.
+          </p>
+        )}
+        {reviews.map((r) => (
+          <div
+            key={r.id}
+            className="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-xs border border-outline-variant/20"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-space-sm">
+                <img alt={r.reviewerName} className="w-9 h-9 rounded-full object-cover bg-surface-container" src={r.reviewerAvatar} />
+                <div className="min-w-0">
+                  <h4 className="font-label-md text-label-md text-on-surface font-bold truncate">{r.reviewerName}</h4>
+                  <span className="font-label-sm text-label-sm text-on-surface-variant block truncate">
+                    Swapped for: {r.swappedFor}
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center text-tertiary" aria-label={`${r.rating} out of 5`}>
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <span
+                    key={n}
+                    className="material-symbols-outlined text-[16px]"
+                    style={{ fontVariationSettings: `'FILL' ${n <= Math.round(r.rating) ? 1 : 0}` }}
+                  >
+                    star
+                  </span>
+                ))}
               </div>
             </div>
-            <div className="flex items-center text-tertiary">
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
+            <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">"{r.comment}"</p>
+            <div className="flex items-center justify-between pt-1 font-label-sm text-label-sm text-on-surface-variant">
+              <span className="flex items-center gap-1 text-secondary">
+                <span className="material-symbols-outlined text-[14px]">verified_user</span> Verified{' '}
+                {r.sessionMins >= 60 ? `${+(r.sessionMins / 60).toFixed(1)}h` : `${r.sessionMins}m`} Session
+              </span>
+              <span>{r.timeAgo}</span>
             </div>
           </div>
-          <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
-            "Elena unlocked React server components for me in 90 minutes faster than weeks of tutorials. Honest, patient, and deeply thoughtful with code critiques. A quintessential TradeSkill barter partner!"
-          </p>
-          <div className="flex items-center justify-between pt-1 font-label-sm text-label-sm text-on-surface-variant">
-            <span className="flex items-center gap-1 text-secondary">
-              <span className="material-symbols-outlined text-[14px]">verified_user</span> Verified 2h Session
-            </span>
-            <span>2 days ago</span>
-          </div>
-        </div>
-
-        {/* Review Card 2 */}
-        <div className="bg-surface-container-lowest rounded-2xl p-space-md shadow-sm space-y-space-xs border border-outline-variant/20">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-space-sm">
-              <img
-                alt="David O'Reilly"
-                className="w-9 h-9 rounded-full object-cover bg-surface-container"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrXQQk7PJHuWxAOdrKBIwxU_VdaIoYXVp1eXiCJB9spHn0vvkJBqkYlaBbCrymJz0NhDIysCqzBd4tNwlz-wOaBkxKN9iA7UTlc9ZsAMO7Nynf-_FefYc8rioxWG5XQEVrz99w9cVUN8BHqlaODdPBTHMSsot3M7PeT6rSa9xO6dBCZiTvqI8iBAj2JgV34ROmBayCX8Y0qhKrklvQ3Tk9vpsHwuFMJSH9c5QRc-2mn5U6OIT-pOs"
-              />
-              <div className="min-w-0">
-                <h4 className="font-label-md text-label-md text-on-surface font-bold truncate">David O'Reilly</h4>
-                <span className="font-label-sm text-label-sm text-on-surface-variant block truncate">
-                  Swapped for: Product Narrative Pitching
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center text-tertiary">
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-              <span className="material-symbols-outlined text-[16px]">star</span>
-            </div>
-          </div>
-          <p className="font-body-sm text-body-sm text-on-surface leading-relaxed">
-            "Her Figma prototyping breakdown helped me secure our team’s quarterly buy-in. Super generous with time and shared her personal component kits. Can't wait for our next trade session."
-          </p>
-          <div className="flex items-center justify-between pt-1 font-label-sm text-label-sm text-on-surface-variant">
-            <span className="flex items-center gap-1 text-secondary">
-              <span className="material-symbols-outlined text-[14px]">verified_user</span> Verified 1h Session
-            </span>
-            <span>Last week</span>
-          </div>
-        </div>
+        ))}
       </section>
 
       {/* Add Skill Modal (Dashboard CRUD) */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-inverse-surface/40 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
+        <div className="fixed inset-0 z-[60] bg-inverse-surface/40 backdrop-blur-sm flex items-end sm:items-center justify-center p-0 sm:p-4">
           <div className="absolute inset-0" onClick={() => setShowAddModal(false)} />
           <div className="relative bg-surface-container-lowest w-full max-w-lg rounded-t-3xl sm:rounded-2xl p-space-lg shadow-xl flex flex-col gap-space-md z-10 animate-in slide-in-from-bottom duration-200">
             <div className="flex items-center justify-between">

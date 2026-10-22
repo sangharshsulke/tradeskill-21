@@ -2,6 +2,7 @@ export type ScreenType = 'home' | 'skills' | 'people' | 'sessions' | 'dashboard'
 
 export interface SkillListing {
   id: string;
+  authorId?: string;
   authorName: string;
   authorRole: string;
   authorAvatar: string;
@@ -68,6 +69,8 @@ export interface SessionItem {
   note?: string;
   rating?: number;
   completedDate?: string;
+  /** true when the peer proposed this session to you */
+  isIncoming?: boolean;
 }
 
 export interface ExchangeInquiry {
@@ -98,4 +101,34 @@ export interface SupportTicket {
   email: string;
   category: string;
   message: string;
+}
+
+export interface CurrentUser {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  title: string;
+  avatar: string;
+  availableThisWeek: boolean;
+}
+
+export interface DashboardStats {
+  trustScore: number;
+  timeSwappedHours: number;
+  activePeers: number;
+  sessionsDone: number;
+  peerRating: number;
+  reviewCount: number;
+}
+
+export interface ReviewItem {
+  id: string;
+  reviewerName: string;
+  reviewerAvatar: string;
+  swappedFor: string;
+  rating: number;
+  comment: string;
+  sessionMins: number;
+  timeAgo: string;
 }
